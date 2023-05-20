@@ -2,11 +2,11 @@ package com.example.pokedexapplication.data.model
 
 import com.google.gson.annotations.SerializedName
 
-data class PokemonModelResponse(
+data class PokemonApiResponse(
     @SerializedName("count") val count: Int,
-    @SerializedName("next") val next: Int,
-    @SerializedName("previous") val previous: Int,
-    @SerializedName("result") val result: List<PokemonItemResponse>
+    @SerializedName("next") val next: String,
+    @SerializedName("previous") val previous: String,
+    @SerializedName("results") val result: List<PokemonItemResponse>
 )
 
 data class PokemonItemResponse(

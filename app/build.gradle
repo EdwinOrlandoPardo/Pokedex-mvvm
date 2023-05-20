@@ -47,11 +47,17 @@ dependencies {
 
     //picasso
     implementation 'com.squareup.picasso:picasso:2.8'
-
+    //activity
+    implementation("androidx.activity:activity-ktx:1.6.1")
     //DataStroe
     implementation("androidx.datastore:datastore-preferences:1.0.0")
-
+    //corrutinas
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9'
+    //liveData
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.5.1")
+    //viewModel
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1")
+
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
