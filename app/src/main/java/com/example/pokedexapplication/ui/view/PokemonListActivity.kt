@@ -1,15 +1,15 @@
 package com.example.pokedexapplication.ui.view
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.pokedexapplication.R
 import com.example.pokedexapplication.databinding.ActivityPokemonListBinding
+import com.example.pokedexapplication.ui.view.PokemonDetailActivity.Companion.EXTRA_NAME
 import com.example.pokedexapplication.ui.viewmodel.PokemonViewModel
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
+
 
 class PokemonListActivity : AppCompatActivity() {
 
@@ -27,7 +27,7 @@ class PokemonListActivity : AppCompatActivity() {
 
     private fun initUi() {
         pokemonlist()
-        pokemonadapter = PokemonListAdapter()
+        pokemonadapter = PokemonListAdapter{name -> goToDetailPokemon(name)}
         binding.rcvPokemonList.layoutManager = LinearLayoutManager(this)
         binding.rcvPokemonList.adapter = pokemonadapter
     }
@@ -38,5 +38,11 @@ class PokemonListActivity : AppCompatActivity() {
             pokemonadapter.updateList(list)
         })
 
+    }
+
+    private fun goToDetailPokemon(name : String){
+        val intent = Intent(this,PokemonDetailActivity::class.java)
+        intent.putExtra(EXTRA_NAME,name)
+        startActivity(intent)
     }
 }

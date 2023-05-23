@@ -12,9 +12,9 @@ class PokemonListViewHolder(view : View) : RecyclerView.ViewHolder(view) {
     private val bindin = ItemPokemonBinding.bind(view)
 
 
-    fun renderView(pokemoitemresponse : PokemonItemResponse){
+    fun renderView(pokemoitemresponse : PokemonItemResponse, onitemSelected:(String) -> Unit){
         bindin.txvNamePokemon.text = pokemoitemresponse.name
-        //bindin.root.setOnClickListener { onitemSelected(pokemoitemresponse.name) }
+        bindin.root.setOnClickListener { onitemSelected(pokemoitemresponse.name) }
 
         leerURL(pokemoitemresponse.url)
         Picasso.get().load("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/"+ leerURL(pokemoitemresponse.url) +".png")

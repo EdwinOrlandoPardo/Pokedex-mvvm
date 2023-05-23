@@ -17,7 +17,7 @@ class PokemonViewModel : ViewModel(){
     fun PokemonListViewModel(){
         viewModelScope.launch {
             val dataresult = pokemonService.getPokemonLsit()
-            if (dataresult != null){
+            if (dataresult.isNotEmpty()){
                 pokemonList.postValue(dataresult)
             }else{
                 Log.i("edwin","pokelis Vacia")

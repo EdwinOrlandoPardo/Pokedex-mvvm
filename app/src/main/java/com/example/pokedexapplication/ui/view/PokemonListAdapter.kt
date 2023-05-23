@@ -7,8 +7,8 @@ import com.example.pokedexapplication.R
 import com.example.pokedexapplication.data.model.PokemonItemResponse
 
 class PokemonListAdapter(
-    var pokemonList: List<PokemonItemResponse> = emptyList()
-
+    var pokemonList: List<PokemonItemResponse> = emptyList(),
+            private val onItemSelected: (String) -> Unit
 ) :
     RecyclerView.Adapter<PokemonListViewHolder>() {
 
@@ -28,6 +28,6 @@ class PokemonListAdapter(
 
     override fun onBindViewHolder(holder: PokemonListViewHolder, position: Int) {
         val item = pokemonList[position]
-        holder.renderView(item)
+        holder.renderView(item,onItemSelected)
     }
 }
