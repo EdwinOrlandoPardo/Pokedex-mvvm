@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
+import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.pokedexapplication.databinding.ActivityPokemonListBinding
@@ -30,6 +31,7 @@ class PokemonListActivity : AppCompatActivity() {
         pokemonadapter = PokemonListAdapter{name -> goToDetailPokemon(name)}
         binding.rcvPokemonList.layoutManager = LinearLayoutManager(this)
         binding.rcvPokemonList.adapter = pokemonadapter
+        progresBar()
     }
 
     private fun pokemonlist(){
@@ -38,6 +40,12 @@ class PokemonListActivity : AppCompatActivity() {
             pokemonadapter.updateList(list)
         })
 
+    }
+
+    private fun progresBar(){
+        pokemonViewModel.progressbarIsLoading.observe(this, Observer {
+            binding.progres.isVisible = it
+        })
     }
 
     private fun goToDetailPokemon(name : String){

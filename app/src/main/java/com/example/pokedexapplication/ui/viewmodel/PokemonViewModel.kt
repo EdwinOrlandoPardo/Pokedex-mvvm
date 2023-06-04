@@ -12,13 +12,16 @@ import kotlinx.coroutines.launch
 class PokemonViewModel : ViewModel(){
 
     val pokemonList = MutableLiveData<List<PokemonItemResponse>>()
+    val progressbarIsLoading = MutableLiveData<Boolean>()
     var pokemonService = PokemonService()
 
     fun PokemonListViewModel(){
         viewModelScope.launch {
+            progressbarIsLoading.postValue(true)
             val dataresult = pokemonService.getPokemonLsit()
             if (dataresult.isNotEmpty()){
                 pokemonList.postValue(dataresult)
+                progressbarIsLoading.postValue(false)
             }else{
                 Log.i("edwin","pokelis Vacia")
             }

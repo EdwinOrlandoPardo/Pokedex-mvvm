@@ -17,7 +17,10 @@ class PokemonService {
         val offset = 0
         return withContext(Dispatchers.IO) {
             val response = retrofit.create(PokemonRequest::class.java).getListPokemon(limit, offset)
-            response.body()!!.result
+            if (!response.isSuccessful){
+                Log.i("edwin","no hay nada")
+            }
+            response.body()!!.result?: emptyList()//si la lista es nula retorna una lista vacia
         }
     }
 
