@@ -8,7 +8,9 @@ import com.example.pokedexapplication.data.model.PokemonTypesResult
 import com.example.pokedexapplication.databinding.ActivityPokemonDetailBinding
 import com.example.pokedexapplication.ui.viewmodel.PokemonDetailViewModel
 import com.squareup.picasso.Picasso
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class PokemonDetailActivity : AppCompatActivity() {
 
 

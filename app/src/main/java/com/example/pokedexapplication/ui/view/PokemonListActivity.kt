@@ -10,8 +10,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.pokedexapplication.databinding.ActivityPokemonListBinding
 import com.example.pokedexapplication.ui.view.PokemonDetailActivity.Companion.EXTRA_NAME
 import com.example.pokedexapplication.ui.viewmodel.PokemonViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class PokemonListActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityPokemonListBinding

@@ -7,16 +7,15 @@ import com.example.pokedexapplication.data.model.PokemonDataModel
 import com.example.pokedexapplication.data.model.PokemonItemResponse
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import javax.inject.Inject
 
-class PokemonService {
-
-    private val retrofit = RetrofitHelper.getRetroFit()
+class PokemonService @Inject constructor(private val request:PokemonRequest) {
 
     suspend fun getPokemonLsit(): List<PokemonItemResponse> {
         val limit = 100
         val offset = 0
         return withContext(Dispatchers.IO) {
-            val response = retrofit.create(PokemonRequest::class.java).getListPokemon(limit, offset)
+            val response = request.getListPokemon(limit, offset)
             if (!response.isSuccessful){
                 Log.i("edwin","no hay nada")
             }
@@ -27,10 +26,9 @@ class PokemonService {
 
     suspend fun getPokemonDetail(name: String) : PokemonDataModel {
         return withContext(Dispatchers.IO) {
-            val response = retrofit.create(PokemonRequest::class.java).getDetailPokemon(name)
+            val response = request.getDetailPokemon(name)
             Log.i("pardo", "${response.body()}")
             response.body()!!
         }
-
     }
 }

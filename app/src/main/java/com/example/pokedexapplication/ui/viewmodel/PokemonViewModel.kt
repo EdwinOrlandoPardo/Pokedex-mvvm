@@ -6,14 +6,18 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.pokedexapplication.data.ApiService.PokemonService
 import com.example.pokedexapplication.data.model.PokemonItemResponse
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-
-class PokemonViewModel : ViewModel(){
+@HiltViewModel
+class PokemonViewModel @Inject constructor(
+    private var pokemonService : PokemonService
+) : ViewModel(){
 
     val pokemonList = MutableLiveData<List<PokemonItemResponse>>()
     val progressbarIsLoading = MutableLiveData<Boolean>()
-    var pokemonService = PokemonService()
+
 
     fun PokemonListViewModel(){
         viewModelScope.launch {
